@@ -3,10 +3,13 @@ package android.example.calculation
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.ezylang.evalex.Expression
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +37,8 @@ class MainActivity : AppCompatActivity() {
         val plusButton = findViewById<Button>(R.id.plus_button)
         val minusButton = findViewById<Button>(R.id.minus_button)
         val multiplyButton = findViewById<Button>(R.id.multiply_button)
+        val divideButton = findViewById<Button>(R.id.divide_button)
+        val clearButton = findViewById<Button>(R.id.clear_button)
 
         val resultTextView = findViewById<TextView>(R.id.result_textView)
 
@@ -96,10 +101,42 @@ class MainActivity : AppCompatActivity() {
             numberStringBuilder.append("*")
             resultTextView.text = numberStringBuilder
         }
+
+        divideButton.setOnClickListener {
+            numberStringBuilder.append("/")
+            resultTextView.text = numberStringBuilder
+        }
+
         pointButton.setOnClickListener {
             numberStringBuilder.append(".")
             resultTextView.text = numberStringBuilder
         }
+
+        clearButton.setOnClickListener {
+            resultTextView.text = "0"
+            numberStringBuilder.clear()
+
+
+        }
+
+        equalButton.setOnClickListener {
+            try {
+                val stringExpression = numberStringBuilder.toString()
+                val expression = Expression(stringExpression)
+                val expressionResult = expression.evaluate().numberValue
+                resultTextView.text = expressionResult.toString()
+
+                numberStringBuilder.clear()
+                numberStringBuilder.append(expressionResult.toString())
+            } catch (t: Throwable) {
+                Toast.makeText(this@MainActivity, "Exception: $t", Toast.LENGTH_LONG)
+                    .show()
+            }
+
+
+
+        }
+
 
     }
 }

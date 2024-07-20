@@ -142,5 +142,22 @@
         app:layout_constraintLeft_toRightOf="@+id/three_button"
         app:layout_constraintRight_toRightOf="parent" />
 
+    <Button
+        android:id="@+id/divide_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="/"
+        app:layout_constraintBottom_toTopOf="@+id/multiply_button"
+        app:layout_constraintLeft_toRightOf="@+id/three_button"
+        app:layout_constraintRight_toRightOf="parent" />
+    <Button
+        android:id="@+id/clear_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Clear"
+        app:layout_constraintBottom_toTopOf="@+id/multiply_button"
+        app:layout_constraintLeft_toLeftOf="@+id/seven_button"
+        app:layout_constraintRight_toRightOf="@+id/nine_button" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
