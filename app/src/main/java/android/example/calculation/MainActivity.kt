@@ -40,8 +40,6 @@ class MainActivity : AppCompatActivity() {
 
         val resultTextView = findViewById<TextView>(R.id.result_textView)
 
-
-
         setListeners()
 
     }
