@@ -152,11 +152,20 @@
         android:id="@+id/reset_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="reset"
+        android:text="Reset"
         app:layout_constraintBottom_toTopOf="@+id/divide_button"
         app:layout_constraintLeft_toRightOf="@+id/three_button"
         app:layout_constraintRight_toRightOf="parent" />
 
+    <Button
+        android:id="@+id/history_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="History"
+        app:layout_constraintBottom_toTopOf="@+id/divide_button"
+        app:layout_constraintRight_toLeftOf="@+id/reset_button"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

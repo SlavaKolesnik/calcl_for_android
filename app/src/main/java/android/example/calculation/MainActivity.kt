@@ -1,5 +1,6 @@
 package android.example.calculation
 
+import android.content.Intent
 import android.example.calculation.databinding.ActivityMainBinding
 import android.os.Bundle
 import android.widget.Button
@@ -16,6 +17,9 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val numberStringBuilder = StringBuilder()
+
+    private val historyList = mutableListOf<String>()
+
 
     override fun onCreate(savedInstanceState: Bundle?)  {
         super.onCreate(savedInstanceState)
@@ -123,8 +127,21 @@ class MainActivity : AppCompatActivity() {
         }
 
         equalButton.setOnClickListener {
+            saveToHistory()
             calculate()
         }
+
+        historyButton.setOnClickListener {
+            //відкриваємо нове актівіті
+            val intent = Intent(this@MainActivity, HistoryActivity::class.java)
+            intent.putExtra("history_list", historyList.toTypedArray())
+            startActivity(intent)
+        }
+    }
+
+    private fun saveToHistory() {
+        val stringExpression = numberStringBuilder.toString()
+        historyList.add(stringExpression)
     }
 
     private fun ActivityMainBinding.calculate() {
